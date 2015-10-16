@@ -1,5 +1,3 @@
-import Products
-
 let App = React.createClass({
   render: function() {
     return (
