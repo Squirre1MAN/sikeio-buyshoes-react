@@ -1,7 +1,8 @@
-var App = React.createClass({
+import Products
+
+let App = React.createClass({
   render: function() {
     return (
-
       <div className="site">
         <div className="bg">
           <div className="bg__img">
@@ -33,5 +34,6 @@ var App = React.createClass({
 window.onload = () => {
     // 使用 App 组件替换 `#root` 的 innerHTML。
     React.render(<App />,document.querySelector("#root"));
+    React.render(<Products />,document.querySelector("#site__content"));
     console.log("app loaded.")
 }
