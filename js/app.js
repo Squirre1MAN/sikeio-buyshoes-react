@@ -87,7 +87,17 @@ let cartItems = {
     id: "marana-x-hook-ups",
     quantity: 2,
     imagePath: "assets/shoes/marana-x-hook-ups-black-orig.png",
-  }
+  },
+  "scout-womens-coco-ho-5": {
+   id: "scout-womens-coco-ho-5",
+   quantity: 1,
+   imagePath: "assets/shoes/scout-womens-coco-ho-5-olive-white-orig.png",
+  },
+  "jameson-2-womens-8": {
+     id: "jameson-2-womens-8",
+     quantity: 1,
+     imagePath: "assets/shoes/jameson-2-womens-8-black-white-gum-orig.png",
+   },
 };
 
 //Component: SiteTitle
@@ -128,7 +138,7 @@ let Product = React.createClass({
        </div>
        <img className="product__heart" src="img/heart.svg" />
      </div>
-   </div>
+    </div>
     );
   }
 });
@@ -203,6 +213,12 @@ var CartItem = React.createClass({
 
 //Component: Cart
 let Cart = React.createClass({
+  componentDidMount(){
+      console.log("Cart Mounting.");
+      let content = React.findDOMNode(this.refs.cart__content);
+      Ps.initialize(content);
+      console.log("perfect-scrollbar loaded.");
+  },
   render: function() {
       let children = [];
       for (let item in cartItems) {
@@ -210,7 +226,7 @@ let Cart = React.createClass({
      }
 
     return (
-    <div className="cart">
+    <div className="cart" ref="cart__content">
       <h3 className="cart__title">Shopping Cart (2)</h3>
       {children}
      </div>
@@ -288,26 +304,8 @@ let App = React.createClass({
   }
 });
 
-function makeCartScrollNicely(){
-    var cart = document.querySelector(".cart");
-    Ps.initialize(cart,{
-        wheelSpeed:2,
-    })
-    console.log("perfect-scrollbar loaded to cart.");
-}
-
-function makeProductsScrollNicely(){
-    var products = document.querySelector(".products");
-    Ps.initialize(products,{
-        wheelSpeed:2,
-    })
-    console.log("perfect-scrollbar loaded to products.");
-}
-
 window.onload = () => {
     // 使用 App 组件替换 `#root` 的 innerHTML。
     React.render(<App />,document.querySelector("#root"));
     console.log("app loaded.");
-    makeCartScrollNicely();
-    makeProductsScrollNicely();
 }

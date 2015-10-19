@@ -737,6 +737,18 @@ a {
           flex-grow: 1;
 }
 
+.cart__title{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 5px 0;
+  font-size: 24px;
+  color: #202020;
+  z-index: 1;
+  background: -webkit-linear-gradient(top, rgba(192,207,221,1), rgba(192,207,221,0.3));
+  background: linear-gradient(to bottom, rgba(192,207,221,1), rgba(192,207,221,0.3));
+}
+
 .checkout{
   -webkit-flex-basis: auto;
       -ms-flex-preferred-size: auto;

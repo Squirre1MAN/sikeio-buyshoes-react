@@ -88,6 +88,16 @@ var cartItems = {
     id: "marana-x-hook-ups",
     quantity: 2,
     imagePath: "assets/shoes/marana-x-hook-ups-black-orig.png"
+  },
+  "scout-womens-coco-ho-5": {
+    id: "scout-womens-coco-ho-5",
+    quantity: 1,
+    imagePath: "assets/shoes/scout-womens-coco-ho-5-olive-white-orig.png"
+  },
+  "jameson-2-womens-8": {
+    id: "jameson-2-womens-8",
+    quantity: 1,
+    imagePath: "assets/shoes/jameson-2-womens-8-black-white-gum-orig.png"
   }
 };
 
@@ -280,6 +290,12 @@ var CartItem = React.createClass({
 var Cart = React.createClass({
   displayName: "Cart",
 
+  componentDidMount: function componentDidMount() {
+    console.log("Cart Mounting.");
+    var content = React.findDOMNode(this.refs.cart__content);
+    Ps.initialize(content);
+    console.log("perfect-scrollbar loaded.");
+  },
   render: function render() {
     var children = [];
     for (var item in cartItems) {
@@ -288,7 +304,7 @@ var Cart = React.createClass({
 
     return React.createElement(
       "div",
-      { className: "cart" },
+      { className: "cart", ref: "cart__content" },
       React.createElement(
         "h3",
         { className: "cart__title" },
@@ -414,27 +430,9 @@ var App = React.createClass({
   }
 });
 
-function makeCartScrollNicely() {
-  var cart = document.querySelector(".cart");
-  Ps.initialize(cart, {
-    wheelSpeed: 2
-  });
-  console.log("perfect-scrollbar loaded to cart.");
-}
-
-function makeProductsScrollNicely() {
-  var products = document.querySelector(".products");
-  Ps.initialize(products, {
-    wheelSpeed: 2
-  });
-  console.log("perfect-scrollbar loaded to products.");
-}
-
 window.onload = function () {
   // 使用 App 组件替换 `#root` 的 innerHTML。
   React.render(React.createElement(App, null), document.querySelector("#root"));
   console.log("app loaded.");
-  makeCartScrollNicely();
-  makeProductsScrollNicely();
 };
 /* cart-item__top-part */ /* checkout__amount */ /* site__content */ /* site__main */ /* site__right-sidebar */
